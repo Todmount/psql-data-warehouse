@@ -21,7 +21,11 @@ The original course examples use MySQL — here, I re-implement them in PostgreS
 
 <details><summary><h2>Data Architecture 🏗</h2></summary>
 This project follows the suggested Medallion Architecture (Bronze, Silver, Gold layers), a common pattern for modern data warehouses.
-<img src="docs/data_architecture.drawio.svg" alt="Medallion Data Architecture"/>
+<img 
+src="docs/data_architecture.webp" 
+alt="Medallion Data Architecture"
+title="High Level Architecture"
+/>
 </details>
 
 
