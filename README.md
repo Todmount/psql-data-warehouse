@@ -42,10 +42,11 @@ title="High Level Architecture"
 - Bash / Python (for ETL & automation)  
 
 
-<details open><summary><h2>Status 📌</h2></summary>
+<details open><summary><h2>Status 📈</h2></summary>
 
 Work in progress 🚧 — updated as I progress through the bootcamp.  
 This is not a production-ready warehouse, but a **learning project** to practice data engineering fundamentals.   
+- [x] Add script for database initialization
 
 </details>
 
@@ -56,5 +57,7 @@ This is a learner’s portfolio project, so external contributions are not expec
 </details>
 
 <details open><summary><h2>Contact 🌐</h2></summary>
-You could find relevant contact info on my [GitHub profile](https://github.com/Todmount).
+
+You could find relevant contact info on my [GitHub profile](https://github.com/Todmount)
+
 </details>
