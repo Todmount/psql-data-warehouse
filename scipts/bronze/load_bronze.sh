@@ -2,16 +2,20 @@
 #===============================================================================
 #Stored Procedure: Load Bronze Layer (Source -> Bronze)
 #===============================================================================
-
+#Script Purpose:
+#    This stored procedure loads data into the 'bronze' schema from external CSV files.
+#    It performs the following actions:
+#    - Truncates the bronze tables before loading data.
+#    - Uses the `\copy` command to load data from csv Files to bronze tables.
+#
 DB_USER="todmount"
 DB_HOST="localhost"
 DB_PORT="5432"
 
-# I believe explicit lock isn't necessary, as truncate should handle it.
-# Did add one just for fun :)
-# Add `\timing` if you don't need time info
-psql -U "$DB_USER" -h "$DB_HOST" -p "$DB_PORT" -d datawarehouse << EOF
 
+# Uncomment `\timing` if you need time info
+psql -U "$DB_USER" -h "$DB_HOST" -p "$DB_PORT" -d datawarehouse << EOF
+-- \timing
 BEGIN;
   \echo ====================
   \echo Loading Bronze Layer
@@ -22,7 +26,6 @@ BEGIN;
   \echo ------------------
   \echo >> Loading bronze.crm_cust_info
   TRUNCATE bronze.crm_cust_info;
-  LOCK TABLE bronze.crm_cust_info IN SHARE MODE;
   \copy bronze.crm_cust_info FROM '/home/todmount/Projects/simple-data-warehouse/datasets/source_crm/cust_info.csv' \
   delimiter ',' csv header;
 
