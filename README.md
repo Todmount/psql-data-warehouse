@@ -13,7 +13,7 @@ The original course examples use MySQL — here, I re-implement them in PostgreS
 - Practice **SQL (DDL, DML, DCL, TCL)** in a warehouse environment  
 - Gain experience with **schema design and data modeling**  
 - Explore **ETL workflows** for loading and transforming data  
-- Learn **dimensional modeling** concepts (Medallion schema)  
+- Learn **dimensional modeling** concepts
 - Apply basic **analytics & reporting** queries  
 - Document progress as a learning and portfolio project  
 </details>
@@ -28,6 +28,13 @@ title="High Level Architecture"
 />
 </details>
 
+<details><summary><h2>Data Flow 📽</h2></summary>
+<img 
+src="docs/data_flow.webp" 
+alt="Project Data Flow"
+title="High Level Architecture"
+/>
+</details>
 
 <details open><summary><h2>Repository Structure 📂</h2></summary>
 
@@ -36,10 +43,13 @@ title="High Level Architecture"
 - `scripts` - SQL, Python, and Bash scripts for ETL and transformations
 - `tests` - Validation scripts and data quality checks
 
+</details>
 <details open><summary><h2>Tech Stack 🛠️</h2></summary>
 
 - **PostgreSQL**  
 - Bash / Python (for ETL & automation)  
+
+</details>
 
 
 <details open><summary><h2>Status 📈</h2></summary>
@@ -47,6 +57,7 @@ title="High Level Architecture"
 Work in progress 🚧 — updated as I progress through the bootcamp.  
 This is not a production-ready warehouse, but a **learning project** to practice data engineering fundamentals.   
 - [x] Add script for database initialization
+- [x] Implement bronze level
 
 </details>
 
