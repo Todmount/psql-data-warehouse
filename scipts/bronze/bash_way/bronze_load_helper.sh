@@ -1,20 +1,19 @@
 #!/bin/bash
-#===============================================================================
-#Stored Procedure: Load Bronze Layer (Source -> Bronze)
-#===============================================================================
-#Script Purpose:
+
+# NOT FOR INDEPENDENT USE.
+# USE IT IN `create_bronze.sh`
+# ======================================================
+# Stored Procedure: Load Bronze Layer (Source -> Bronze)
+# ======================================================
+# Script Purpose:
 #    This stored procedure loads data into the 'bronze' schema from external CSV files.
 #    It performs the following actions:
 #    - Truncates the bronze tables before loading data.
 #    - Uses the `\copy` command to load data from csv Files to bronze tables.
 #
-DB_USER="todmount"
-DB_HOST="localhost"
-DB_PORT="5432"
-
 
 # Uncomment `\timing` if you need time info
-psql -U "$DB_USER" -h "$DB_HOST" -p "$DB_PORT" -d datawarehouse << EOF
+PGPASSWORD=$DB_PASSWORD psql -U "$DB_USER" -h "$DB_HOST" -p "$DB_PORT" -d datawarehouse << EOF
 -- \timing
 BEGIN;
   \echo ====================

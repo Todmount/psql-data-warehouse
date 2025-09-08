@@ -18,7 +18,7 @@ Usage Example:
 Note:
     The procedure will work only if files are stored on the server
     and the user has the role `pg_read_server_files`.
-    In another case kindly use the `load_bronze.sh`
+    In another case kindly use the `bronze_load_helper.sh`
     that uses client-side behavior
 If you want to see the time it takes, please read PostgreSQL documents on how to enable logging
 ===============================================================================
@@ -78,3 +78,5 @@ BEGIN
     DELIMITER ',' CSV HEADER;
 END;
 $$;
+
+CALL bronze.load_bronze_layer()
