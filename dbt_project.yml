@@ -1,36 +1,73 @@
+name: "simple_data_warehouse"
+version: "1.0"
+config-version: 2
 
-# Name your project! Project names should contain only lowercase characters
-# and underscores. A good package name should reflect your organization's
-# name or the intended use of these models
-name: 'psql_dwh'
-version: '1.0.0'
+profile: "simple_data_warehouse"
 
-# This setting configures which "profile" dbt uses for this project.
-profile: 'psql_dwh'
-
-# These configurations specify where dbt should look for different types of files.
-# The `model-paths` config, for example, states that models in this project can be
-# found in the "models/" directory. You probably won't need to change these!
 model-paths: ["models"]
-analysis-paths: ["analyses"]
-test-paths: ["tests"]
-seed-paths: ["seeds"]
+seed-paths:  ["seeds"]
 macro-paths: ["macros"]
 snapshot-paths: ["snapshots"]
+test-paths:    ["tests"]
+analysis-paths: ["analyses"]
 
-clean-targets:         # directories to be removed by `dbt clean`
-  - "target"
-  - "dbt_packages"
-
-
-# Configuring models
-# Full documentation: https://docs.getdbt.com/docs/configuring-models
-
-# In this example config, we tell dbt to build all models in the example/
-# directory as views. These settings can be overridden in the individual model
-# files using the `{{ config(...) }}` macro.
+# Default behavior; we'll override per-folder below
 models:
-  psql_dwh:
-    # Config indicated by + and applies to all files under models/example/
-    example:
-      +materialized: view
+  simple_data_warehouse:
+    +on_schema_change: append_new_columns   # friendly during iteration
+    bronze:
+      +schema: bronze
+      +materialized: table                  # if bronze comes from seeds, these are physical tables
+    silver:
+      +schema: silver
+      +materialized: table                  # silver tables are persisted
+
+seeds:
+  simple_data_warehouse:
+    +schema: bronze                         # seeds land in bronze schema
+    bronze:
+      # Make sure CSV headers are all lowercase in files (simplifies postgres)
+      crm_cust_info:
+        +column_types:
+          cst_id: integer
+          cst_key: varchar(50)
+          cst_firstname: varchar(75)
+          cst_lastname: varchar(50)
+          cst_marital_status: varchar(20)
+          cst_gndr: varchar(20)
+          cst_create_date: date
+      crm_prd_info:
+        +column_types:
+          prd_id: integer
+          prd_key: varchar(50)
+          prd_nm: varchar(50)
+          prd_cost: integer
+          prd_line: varchar(20)
+          prd_start_dt: date
+          prd_end_dt: date
+      crm_sales_details:
+        +column_types:
+          sls_ord_num: varchar(50)
+          sls_prd_key: varchar(50)
+          sls_cust_id: integer
+          sls_order_id: integer
+          sls_ship_dt: integer
+          sls_due_dt: integer
+          sls_sales: integer
+          sls_quantity: integer
+          sls_price: integer
+      erp_cust_az12:
+        +column_types:
+          cid: varchar(50)
+          bdate: date
+          gen: varchar(10)
+      erp_loc_a101:
+        +column_types:
+          cid: varchar(50)
+          cntry: varchar(50)
+      erp_px_cat_g1v2:
+        +column_types:
+          id: varchar(10)
+          cat: varchar(50)
+          subcat: varchar(50)
+          maintenance: varchar(50)
