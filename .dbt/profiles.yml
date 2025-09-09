@@ -9,4 +9,4 @@ dbt_postgres_project:
       port: "{{ env_var('DB_PORT') | int }}"
       dbname: "{{ env_var('DB_NAME', 'datawarehouse') }}"
       schema: ""
-      threads: 4
+      threads: 16
