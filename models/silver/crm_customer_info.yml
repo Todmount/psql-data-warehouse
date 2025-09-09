@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: crm_customer_info
+    description: >
+      Curated customer information from the CRM system. 
+      Deduplicated, cleaned, and standardized for analytics use.
+    columns:
+      - name: customer_id
+        description: Unique identifier for each customer.
+        tests:
+          - not_null
+          - unique
+      - name: customer_key
+        description: Business key (CRM internal reference)
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: Customer first name (trimmed)
+        tests:
+          - not_null
+      - name: last_name
+        description: Customer last name (trimmed)
+        tests:
+          - not_null
+      - name: marital_status
+        description: Standardized marital status (Married, Single, n/a)
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ 'Married', 'Single', 'n/a' ]
+      - name: gender
+        description: Standardized customer gender (Male, Female, n/a)
+        tests:
+          - accepted_values:
+              arguments:
+                values: [ 'Male', 'Female', 'n/a' ]
+      - name: created_at
+        description: Original CRM creation timestamp
+      - name: dwh_load_date
+        description: Load timestamp when record was processed into silver
