@@ -1,0 +1,17 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: erp_LOC_A101
+        description: 'Additional customer info - location, loaded from LOC_A101.csv as-is'
+        columns:
+          - name: CID
+            description: A column automatically generated from erp_LOC_A101.
+            tests:
+              - not_null
+          - name: CNTRY
+            description: A column automatically generated from erp_LOC_A101.
+            tests:
+              - not_null

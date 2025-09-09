@@ -7,7 +7,7 @@ models:
       Deduplicated, cleaned, and standardized for analytics use.
     columns:
       - name: customer_id
-        description: Unique identifier for each customer.
+        description: Unique identifier for each customer
         tests:
           - not_null
           - unique

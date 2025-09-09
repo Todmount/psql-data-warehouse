@@ -1,0 +1,37 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: crm_prd_info
+        description: 'Product information loaded from prd_info.csv as-is'
+        columns:
+          - name: prd_id
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_key
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_nm
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_cost
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_line
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_start_dt
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null
+          - name: prd_end_dt
+            description: A column automatically generated from crm_prd_info.
+            tests:
+              - not_null

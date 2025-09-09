@@ -68,9 +68,8 @@ def generate_dbt_yml(csv_file_path: Path, prefix: str) -> None:
         "sources": [
             {
                 "name": "bronze",
-                "description": "",
                 "schema": "bronze",
-                "tables": [{"name": table_name, "columns": columns}],
+                "tables": [{"name": table_name, "description": f"[insert] loaded from {source_name}.csv as-is", "columns": columns}],
             }
         ],
     }

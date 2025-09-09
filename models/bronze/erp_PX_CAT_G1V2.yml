@@ -1,0 +1,25 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: erp_PX_CAT_G1V2
+        description: 'Additional product information, category and subcategory, loaded from PX_CAT_G1V2.csv as-is'
+        columns:
+          - name: ID
+            description: A column automatically generated from erp_PX_CAT_G1V2.
+            tests:
+              - not_null
+          - name: CAT
+            description: A column automatically generated from erp_PX_CAT_G1V2.
+            tests:
+              - not_null
+          - name: SUBCAT
+            description: A column automatically generated from erp_PX_CAT_G1V2.
+            tests:
+              - not_null
+          - name: MAINTENANCE
+            description: A column automatically generated from erp_PX_CAT_G1V2.
+            tests:
+              - not_null
