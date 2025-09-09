@@ -1,4 +1,4 @@
-simple_data_warehouse:
+dbt_postgres_project:
   target: dev
   outputs:
     dev:
@@ -8,5 +8,5 @@ simple_data_warehouse:
       password: "{{ env_var('DB_PASSWORD') }}"
       port: "{{ env_var('DB_PORT') | int }}"
       dbname: "{{ env_var('DB_NAME', 'datawarehouse') }}"
-      schema: "{{ env_var('DB_SCHEMA', 'public') }}"    # dbt will override per-folder below
+      schema: ""
       threads: 4
