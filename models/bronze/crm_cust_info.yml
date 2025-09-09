@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: crm_cust_info
+        description: >
+          Customer information loaded from cust_info.csv as-is.
+        columns:
+          - name: cst_id
+            description: Unique identifier for each customer.
+            tests:
+              - unique
+              - not_null
+          - name: cst_key
+            description: Business key (CRM internal reference)
+            tests:
+              - unique
+              - not_null
+          - name: cst_firstname
+            description: Customer first name
+            tests:
+              - not_null
+          - name: cst_lastname
+            description: Customer last name
+            tests:
+              - not_null
+          - name: cst_marital_status
+            description: Customer marital status
+            tests:
+              - not_null
+          - name: cst_gender
+            description: Customer gender
+            tests:
+              - not_null
+          - name: cst_create_date
+            description: Original CRM creation timestamp
+            tests:
+              - not_null

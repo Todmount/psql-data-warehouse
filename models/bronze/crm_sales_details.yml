@@ -1,0 +1,45 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: crm_sales_details
+        description: 'Sales information loaded from sales_details.csv as-is'
+        columns:
+          - name: sls_ord_num
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_prd_key
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_cust_id
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_order_dt
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_ship_dt
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_due_dt
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_sales
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_quantity
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null
+          - name: sls_price
+            description: A column automatically generated from crm_sales_details.
+            tests:
+              - not_null

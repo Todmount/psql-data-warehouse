@@ -1,0 +1,21 @@
+version: 2
+
+sources:
+  - name: bronze
+    schema: bronze
+    tables:
+      - name: erp_CUST_AZ12
+        description: 'Additional customer info, birthday and gender(maybe duplicate) loaded from CUST_AZ12.csv as-is'
+        columns:
+          - name: CID
+            description: A column automatically generated from erp_CUST_AZ12.
+            tests:
+              - not_null
+          - name: BDATE
+            description: A column automatically generated from erp_CUST_AZ12.
+            tests:
+              - not_null
+          - name: GEN
+            description: A column automatically generated from erp_CUST_AZ12.
+            tests:
+              - not_null
