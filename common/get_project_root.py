@@ -1,5 +1,4 @@
 import pathlib
-import sys
 
 def get_project_root():
     # Get the path of the script that is being executed
