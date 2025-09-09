@@ -1,8 +1,9 @@
-name: "simple_data_warehouse"
+name: "dbt_postgres_project"
+
 version: "1.0"
 config-version: 2
 
-profile: "simple_data_warehouse"
+profile: "dbt_postgres_project"
 
 model-paths: ["models"]
 seed-paths:  ["seeds"]
@@ -11,63 +12,15 @@ snapshot-paths: ["snapshots"]
 test-paths:    ["tests"]
 analysis-paths: ["analyses"]
 
-# Default behavior; we'll override per-folder below
+quoting:
+  database: false
+  schema: false
+  identifier: false
+
 models:
-  simple_data_warehouse:
-    +on_schema_change: append_new_columns   # friendly during iteration
-    bronze:
-      +schema: bronze
-      +materialized: table                  # if bronze comes from seeds, these are physical tables
+  +on_schema_change: append_new_columns   # friendly during iteration
+
+  dbt_postgres_project:
     silver:
       +schema: silver
       +materialized: table                  # silver tables are persisted
-
-seeds:
-  simple_data_warehouse:
-    +schema: bronze                         # seeds land in bronze schema
-    bronze:
-      # Make sure CSV headers are all lowercase in files (simplifies postgres)
-      crm_cust_info:
-        +column_types:
-          cst_id: integer
-          cst_key: varchar(50)
-          cst_firstname: varchar(75)
-          cst_lastname: varchar(50)
-          cst_marital_status: varchar(20)
-          cst_gndr: varchar(20)
-          cst_create_date: date
-      crm_prd_info:
-        +column_types:
-          prd_id: integer
-          prd_key: varchar(50)
-          prd_nm: varchar(50)
-          prd_cost: integer
-          prd_line: varchar(20)
-          prd_start_dt: date
-          prd_end_dt: date
-      crm_sales_details:
-        +column_types:
-          sls_ord_num: varchar(50)
-          sls_prd_key: varchar(50)
-          sls_cust_id: integer
-          sls_order_id: integer
-          sls_ship_dt: integer
-          sls_due_dt: integer
-          sls_sales: integer
-          sls_quantity: integer
-          sls_price: integer
-      erp_cust_az12:
-        +column_types:
-          cid: varchar(50)
-          bdate: date
-          gen: varchar(10)
-      erp_loc_a101:
-        +column_types:
-          cid: varchar(50)
-          cntry: varchar(50)
-      erp_px_cat_g1v2:
-        +column_types:
-          id: varchar(10)
-          cat: varchar(50)
-          subcat: varchar(50)
-          maintenance: varchar(50)
