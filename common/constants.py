@@ -6,9 +6,11 @@ from common.get_project_root import get_project_root
 load_dotenv(find_dotenv())
 
 DB_HOST = os.getenv("DB_HOST")
+DB_NAME = os.getenv("DB_NAME")
 DB_USER = os.getenv("DB_USER")
-DB_SUPERUSER = os.getenv("DB_SUPERUSER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_SUPERNAME = os.getenv("DB_SUPERNAME")
+DB_SUPERUSER = os.getenv("DB_SUPERUSER")
 DB_SUPERPASSWORD = os.getenv("DB_SUPERPASSWORD")
 
 PROJECT_ROOT = get_project_root()
