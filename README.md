@@ -57,7 +57,6 @@
 
 <!-- Data Flow -->
 <details><summary><h2>Data Flow 📽</h2></summary>
-
     <img
         src="docs/assets/data_flow.webp"
         alt="Project Data Flow"
@@ -69,9 +68,14 @@
 <!-- Repository Structure -->
 <details open><summary><h2>Repository Structure 📂</h2></summary>
 
+- `common` - Helper functions I use across the project
 - `datasets` - Raw ERP and CRM datasets used for the project
-- `docs` - Documentation and architecture diagrams
+- `docs` - Documentation, architecture diagrams, and my progress notes
+- `macros` - Stores dbt macros
+- `models` - Stores dbt models
+- `playground` - Scripts I used before finding more conventional/better/effective way
 - `scripts` - SQL, Python, and Bash scripts for ETL and transformations
+- `snapshots` - Folder I did explore, but didn't use that much. Will store a snapshot of a DB
 - `tests` - Validation scripts and data quality checks
 </details>
 
@@ -88,11 +92,22 @@
 
 Work in progress 🚧 — updated as I progress through the bootcamp.  
 This is not a production-ready warehouse, but a **learning project** to practice data engineering fundamentals.
-
-- [x] Add script for database initialization
+<h4>Milestones</h4>
 - [x] Implement bronze level
+- [ ] Implement silver level
+- [ ] Implement gold level
+- [ ] Add general analytics to the pipeline
 
 </details>
+
+<!-- Learner Notes -->
+<details open>
+  <summary><h2>Learning Notes 📒</h2></summary>
+
+I’m documenting my journey through building this project.  
+See [NOTES.md](docs/NOTES.md) for detailed progress, challenges, and reflections.
+</details>
+
 
 <!-- Contributing -->
 <details open><summary><h2>Contributing 🤝</h2></summary>
