@@ -1,4 +1,4 @@
-{{ config(schema='silver') }}
+{{- config(schema='silver') -}}
 
 with deduped as (
     select *,
