@@ -45,8 +45,8 @@ def yaml_dump_indent_lists(data: Any, **kwargs):
 
 def generate_dbt_yml(csv_file_path: Path, prefix: str) -> None:
 
-    source_name = csv_file_path.stem
-    table_name = f"{prefix}_{source_name}"
+    source_name = csv_file_path.stem.strip().lower()
+    table_name = f"{prefix}_{source_name}".strip().lower()
     output_yml_path = BRONZE_PATH / f"{table_name}.yml"
 
     with open(csv_file_path, "r") as csvfile:
